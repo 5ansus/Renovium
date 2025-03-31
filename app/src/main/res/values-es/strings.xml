@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Renovium</string>
-    <string name="hello_world">¡Hola Mundo!</string>
+    <string name="welcome_msg">¡Bienvenido a Renovium!</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="start_game">Comenzar juego</string>
+    <string name="replays">Ver repeticiones</string>
+    <string name="game_start_msg">El juego va a comenzar...</string>
 </resources>

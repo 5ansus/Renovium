@@ -7,6 +7,9 @@ android {
     namespace = "es.uam.eps.dadm.santioscar.renovium"
     compileSdk = 35
 
+    buildFeatures {
+        dataBinding = true
+    }
     defaultConfig {
         applicationId = "es.uam.eps.dadm.santioscar.renovium"
         minSdk = 26
