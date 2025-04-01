@@ -6,4 +6,11 @@
     <string name="start_game">Start game</string>
     <string name="replays">Watch replays</string>
     <string name="game_start_msg">Game is starting...</string>
+
+
+
+    <string name="intro_text">Englishg text</string>
+    <string name="intro_avatar">Choose avatar</string>
+    <string name="intro_city">Choose city</string>
+    <string name="intro_start">Start game</string>
 </resources>

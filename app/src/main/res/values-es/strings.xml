@@ -5,4 +5,9 @@
     <string name="start_game">Comenzar juego</string>
     <string name="replays">Ver repeticiones</string>
     <string name="game_start_msg">El juego va a comenzar...</string>
+
+    <string name="intro_text">Texto en Español</string>
+    <string name="intro_avatar">Seleccione su avatar</string>
+    <string name="intro_city">Seleccione su ciudad</string>
+    <string name="intro_start">Iniciar partida</string>
 </resources>

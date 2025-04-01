@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Texto de introducción -->
+    <TextView
+        android:id="@+id/gameIntroText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_text"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Imagen Avatar -->
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/avatar1"
+        app:layout_constraintTop_toBottomOf="@id/gameIntroText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Botones de navegación Avatar -->
+    <Button
+        android:id="@+id/avatarPrevButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="←"
+        app:layout_constraintEnd_toStartOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="@id/avatarImage"/>
+
+    <Button
+        android:id="@+id/avatarNextButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="→"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="@id/avatarImage"/>
+
+    <!-- Etiqueta Avatar -->
+    <TextView
+        android:id="@+id/selectAvatarLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_avatar"
+        app:layout_constraintTop_toBottomOf="@id/avatarImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center"/>
+
+    <!-- Imagen Ciudad -->
+    <ImageView
+        android:id="@+id/cityImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/city1"
+        app:layout_constraintTop_toBottomOf="@id/selectAvatarLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Botones de navegación Ciudad -->
+    <Button
+        android:id="@+id/cityPrevButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="←"
+        app:layout_constraintEnd_toStartOf="@id/cityImage"
+        app:layout_constraintTop_toTopOf="@id/cityImage"/>
+
+    <Button
+        android:id="@+id/cityNextButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="→"
+        app:layout_constraintStart_toEndOf="@id/cityImage"
+        app:layout_constraintTop_toTopOf="@id/cityImage"/>
+
+    <!-- Etiqueta Ciudad -->
+    <TextView
+        android:id="@+id/selectCityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_city"
+        app:layout_constraintTop_toBottomOf="@id/cityImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center"/>
+
+    <!-- Botón para continuar -->
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_start"
+        app:layout_constraintTop_toBottomOf="@id/selectCityLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
