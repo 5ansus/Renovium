@@ -10,4 +10,5 @@
     <string name="intro_avatar">Seleccione su avatar</string>
     <string name="intro_city">Seleccione su ciudad</string>
     <string name="intro_start">Iniciar partida</string>
+    <string name="back">Boton atras</string>
 </resources>
