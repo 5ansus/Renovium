@@ -9,8 +9,9 @@
 
 
 
-    <string name="intro_text">Englishg text</string>
-    <string name="intro_avatar">Choose avatar</string>
-    <string name="intro_city">Choose city</string>
+    <string name="intro_text">English text</string>
+    <string name="intro_avatar">Choose your avatar</string>
+    <string name="intro_city">Choose a city</string>
     <string name="intro_start">Start game</string>
+    <string name="back">Back button</string>
 </resources>
