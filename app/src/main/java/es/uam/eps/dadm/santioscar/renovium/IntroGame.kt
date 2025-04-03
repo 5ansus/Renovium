@@ -22,7 +22,18 @@ class IntroGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_game)  // Usamos setContentView como antes
 
+        // Restaurar estado si existe
+        savedInstanceState?.let {
+            avatarIndex = it.getInt("AVATAR_INDEX", 0)
+            cityIndex = it.getInt("CITY_INDEX", 0)
+        }
+        initViews()
+
         updateImages()
+
+    }
+
+    private fun initViews(){
 
         // Encontramos las vistas de manera tradicional usando findViewById
         val avatarImage: ImageView = findViewById(R.id.avatarImage)
@@ -76,4 +87,15 @@ class IntroGame : AppCompatActivity() {
         imageView.setImageDrawable(drawable)
         Timber.d("Image loaded from drawable resource ID: $drawableResId")
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("AVATAR_INDEX", avatarIndex)
+        outState.putInt("CITY_INDEX", cityIndex)
+        Timber.d("Estado guardado: avatar=$avatarIndex, city=$cityIndex")
+    }
 }
+
+
+
+
