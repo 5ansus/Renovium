@@ -12,30 +12,34 @@ import androidx.lifecycle.ViewModel
  */
 class IntroGameViewModel : ViewModel() {
 
-    // LiveData para mostrar el número de ciudad
-    private val _remainingCities = MutableLiveData<Int>()
-    val remainingCities: LiveData<Int> = _remainingCities
+    private val _avatarIndex = MutableLiveData<Int>(0)
+    private val _cityIndex = MutableLiveData<Int>(0)
+    private val _remainingCities = MutableLiveData<Int>(3)
+    private val _remainingAvatars = MutableLiveData<Int>(3)
 
-    // LiveData para mostrar el número de avatar
-    private val _remainingAvatars = MutableLiveData<Int>()
+    val avatarIndex: LiveData<Int> = _avatarIndex
+    val cityIndex: LiveData<Int> = _cityIndex
+    val remainingCities: LiveData<Int> = _remainingCities
     val remainingAvatars: LiveData<Int> = _remainingAvatars
 
-    /**
-     * Inicializa el número de avatar y ciudad
-     */
-    init {
-        _remainingCities.value = 3 // Ejemplo: city1, city2...
-        _remainingAvatars.value = 3 // Ejemplo: avatar1, avatar2...
-    }
 
     /**
-     * Actualiza el número de avatar y ciudad
+     * Actualiza el número de avatar y ciudad y sus indices
      *
-     * @param citiesLeft Número de ciudades restantes después de una selección.
-     * @param avatarsLeft Número de avatares restantes después de una selección.
+     * @param direction Int la dirección del índice (-1 a la izquierda, 1 a la derecha)
+     * @param isAvatar Boolean si hay que actualizar la imagen del Avatar o de Ciudad
+     * @totalItems Int Numero total de elementos en el array (es 3 pero por si luego decidimos
+     * aumentarlo)
      */
-    fun updateSelections(citiesLeft: Int, avatarsLeft: Int) {
-        _remainingCities.value = citiesLeft
-        _remainingAvatars.value = avatarsLeft
+    fun updateSelections(direction: Int, isAvatar: Boolean, totalItems: Int) {
+        if (isAvatar) {
+            val newIndex = ((_avatarIndex.value ?: 0) + direction + totalItems) % totalItems
+            _avatarIndex.value = newIndex
+            _remainingAvatars.value = totalItems - (newIndex + 1)
+        } else {
+            val newIndex = ((_cityIndex.value ?: 0) + direction + totalItems) % totalItems
+            _cityIndex.value = newIndex
+            _remainingCities.value = totalItems - (newIndex + 1)
+        }
     }
 }

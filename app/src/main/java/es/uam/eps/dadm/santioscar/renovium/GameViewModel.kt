@@ -15,7 +15,7 @@ import timber.log.Timber
  *
  * @param context Context La vista
  */
-class GameView(private val context: Context) : DefaultLifecycleObserver {
+class GameViewModel(private val context: Context) : DefaultLifecycleObserver {
 
     val welcomeMessage = ObservableField<String>(context.getString(R.string.welcome_msg))
 
@@ -57,4 +57,3 @@ class GameView(private val context: Context) : DefaultLifecycleObserver {
         Timber.d("Llamada a GameView.onStop")
     }
 }
-

@@ -1,12 +1,10 @@
 package es.uam.eps.dadm.santioscar.renovium
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import es.uam.eps.dadm.santioscar.renovium.databinding.ActivityMainBinding
 import timber.log.Timber
-import es.uam.eps.dadm.santioscar.renovium.IntroGame
 
 /**
  * Actividad de la vista inicial de la app
@@ -16,7 +14,7 @@ import es.uam.eps.dadm.santioscar.renovium.IntroGame
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var gameView: GameView
+    private lateinit var gameViewModel: GameViewModel
 
     /**
      * Método llamado cuando la actividad se crea.
@@ -31,10 +29,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Inicializar la vista del juego y añadirlo al lifecycle
-        gameView = GameView(this)
-        binding.gameView = gameView
+        gameViewModel = GameViewModel(this)
+        binding.gameView = gameViewModel
         binding.lifecycleOwner = this
-        lifecycle.addObserver(gameView) // Asociar la vista del juego al ciclo de vida de la actividad
+        lifecycle.addObserver(gameViewModel) // Asociar la vista del juego al ciclo de vida de la actividad
         Timber.tag("LOG").d("Aplicación iniciada")
     }
 }

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="GameView"
-            type="es.uam.eps.dadm.santioscar.renovium.GameView" />
+            type="es.uam.eps.dadm.santioscar.renovium.GameViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
