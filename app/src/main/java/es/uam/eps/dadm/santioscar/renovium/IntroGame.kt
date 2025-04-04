@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import es.uam.eps.dadm.santioscar.renovium.R
 import timber.log.Timber
 
@@ -17,15 +18,30 @@ class IntroGame : AppCompatActivity() {
     private val cityImages = arrayOf(R.drawable.city1, R.drawable.city2, R.drawable.city3)
     private var avatarIndex = 0
     private var cityIndex = 0
+    private lateinit var viewModel: IntroGameViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_game)  // Usamos setContentView como antes
 
+        // Inicializa ViewModel
+        viewModel = ViewModelProvider(this).get(IntroGameViewModel::class.java)
+
         // Restaurar estado si existe
         savedInstanceState?.let {
             avatarIndex = it.getInt("AVATAR_INDEX", 0)
             cityIndex = it.getInt("CITY_INDEX", 0)
+        }
+
+        // Observa los LiveData
+        viewModel.remainingCities.observe(this) { remaining ->
+            findViewById<TextView>(R.id.tvCitiesLeft).text =
+                "Ciudades disponibles: $remaining"
+        }
+
+        viewModel.remainingAvatars.observe(this) { remaining ->
+            findViewById<TextView>(R.id.tvAvatarsLeft).text =
+                "Avatares disponibles: $remaining"
         }
         initViews()
 
@@ -61,9 +77,17 @@ class IntroGame : AppCompatActivity() {
     private fun changeImage(direction: Int, isAvatar: Boolean) {
         if (isAvatar) {
             avatarIndex = (avatarIndex + direction + avatarImages.size) % avatarImages.size
+            viewModel.updateSelections(
+                viewModel.remainingCities.value ?: 3,
+                avatarImages.size - (avatarIndex + 1))
+
             Timber.d("Avatar index changed to: $avatarIndex")
         } else {
             cityIndex = (cityIndex + direction + cityImages.size) % cityImages.size
+            viewModel.updateSelections(
+                cityImages.size - (cityIndex + 1),
+                viewModel.remainingAvatars.value ?: 3)
+
             Timber.d("City index changed to: $cityIndex")
         }
         updateImages()

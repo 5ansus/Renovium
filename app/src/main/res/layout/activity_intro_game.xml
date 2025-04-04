@@ -121,5 +121,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <!-- Texto de LiveData -->
+    <TextView
+        android:id="@+id/tvCitiesLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cityImage"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvAvatarsLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/avatarImage"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="27dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
