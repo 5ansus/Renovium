@@ -12,6 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import es.uam.eps.dadm.santioscar.renovium.R
 import timber.log.Timber
 
+/**
+ * La vista de inicialización del juego. Contiene la logica para el funcionamento de los botones
+ * y el cambio de las imagenes.
+ *
+ */
 class IntroGame : AppCompatActivity() {
     // Aquí cambia los nombres de los archivos a los identificadores de recursos en drawable
     private val avatarImages = arrayOf(R.drawable.avatar1, R.drawable.avatar2, R.drawable.avatar3)
@@ -49,6 +54,10 @@ class IntroGame : AppCompatActivity() {
 
     }
 
+    /**
+     * Función auxiliar que encapsula el funcionamiento de los botones de la vista.
+     *
+     */
     private fun initViews(){
 
         // Encontramos las vistas de manera tradicional usando findViewById
@@ -74,6 +83,14 @@ class IntroGame : AppCompatActivity() {
         }
     }
 
+    /**
+     * Realiza el cambio en el array de imagenes de avatar o ciudad, ademas muestra la cantidad
+     * de avatares/cuidades restantes en el array de cada uno (esto mediante el uso de LiveData)
+     *
+     * @param direction int La dirección en el array de la siguiente imagen (1 hacia delante
+     * -1 hacia atras)
+     * @param isAvatar Boolean Si el array de la imagen que hay que cambiar es el avatar o la ciudad
+     */
     private fun changeImage(direction: Int, isAvatar: Boolean) {
         if (isAvatar) {
             avatarIndex = (avatarIndex + direction + avatarImages.size) % avatarImages.size
@@ -93,6 +110,10 @@ class IntroGame : AppCompatActivity() {
         updateImages()
     }
 
+    /**
+     * Realiza el cambio de imagenes de la vista, utiliza drawable para realizarlo
+     *
+     */
     private fun updateImages() {
         val avatarImage: ImageView = findViewById(R.id.avatarImage)
         val cityImage: ImageView = findViewById(R.id.cityImage)
@@ -105,7 +126,12 @@ class IntroGame : AppCompatActivity() {
         loadDrawableImage(cityImages[cityIndex], cityImage)
     }
 
-    // Cambiado para cargar imágenes desde drawable
+    /**
+     * Realiza la carga de las imagenes nuevas mediante el uso de Drawable
+     *
+     * @param drawableResId Int el id de la imagen que sustituira a la otra
+     * @param imageView ImageView la vista, para asi poder acceder a sus recursos
+     */
     private fun loadDrawableImage(drawableResId: Int, imageView: ImageView) {
         val drawable: Drawable? = ContextCompat.getDrawable(this, drawableResId)
         imageView.setImageDrawable(drawable)
@@ -119,7 +145,6 @@ class IntroGame : AppCompatActivity() {
         Timber.d("Estado guardado: avatar=$avatarIndex, city=$cityIndex")
     }
 }
-
 
 
 
