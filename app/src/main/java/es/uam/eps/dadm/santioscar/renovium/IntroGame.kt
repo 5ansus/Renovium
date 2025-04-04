@@ -36,12 +36,12 @@ class IntroGame : AppCompatActivity() {
         // Observa los LiveData
         viewModel.remainingCities.observe(this) { remaining ->
             findViewById<TextView>(R.id.tvCitiesLeft).text =
-                "Ciudades disponibles: $remaining"
+                getString(R.string.cities_available, remaining)
         }
 
         viewModel.remainingAvatars.observe(this) { remaining ->
             findViewById<TextView>(R.id.tvAvatarsLeft).text =
-                "Avatares disponibles: $remaining"
+                getString(R.string.avatars_available, remaining)
         }
         initViews()
 

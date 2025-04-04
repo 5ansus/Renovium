@@ -128,7 +128,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/cityImage"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="27dp"/>
 
     <TextView
         android:id="@+id/tvAvatarsLeft"

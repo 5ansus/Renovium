@@ -14,4 +14,6 @@
     <string name="intro_city">Choose a city</string>
     <string name="intro_start">Start game</string>
     <string name="back">Back button</string>
+    <string name="cities_available">Cities available: %d</string>
+    <string name="avatars_available">Avatars available: %d</string>
 </resources>

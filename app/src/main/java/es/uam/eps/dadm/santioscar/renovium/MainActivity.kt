@@ -21,7 +21,10 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(gameView)
         Timber.tag("LOG").d("Aplicación iniciada")
         binding.startButton.setOnClickListener {
-            gameView.handleStartGame()
+
+            val intent = Intent(this, IntroGame::class.java)
+            startActivity(intent)
+            Timber.d("Iniciando IntroGame desde MainActivity")
         }
     }
 }
