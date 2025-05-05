@@ -16,23 +16,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var gameViewModel: GameViewModel
 
-    /**
-     * Método llamado cuando la actividad se crea.
-     * Configura el enlace de datos, inicializa la vista del juego y la asocia al ciclo de vida.
-     *
-     * @param savedInstanceState Estado previo de la actividad
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Configurar enlace de datos con el diseño XML
+        // 1. Configurar Data Binding con el layout original
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        // Inicializar la vista del juego y añadirlo al lifecycle
+        // 2. Inicializar ViewModel y configuración existente
         gameViewModel = GameViewModel(this)
         binding.gameView = gameViewModel
         binding.lifecycleOwner = this
-        lifecycle.addObserver(gameViewModel) // Asociar la vista del juego al ciclo de vida de la actividad
+        lifecycle.addObserver(gameViewModel)
+
+        // 3. Reemplazar el contenido con el fragmento manteniendo la lógica
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, MainFragment.newInstance(gameViewModel))
+            .addToBackStack(null)
+            .commit()
+
         Timber.tag("LOG").d("Aplicación iniciada")
     }
 }
