@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 
 import es.uam.eps.dadm.santioscar.renovium.databinding.FragmentSeleccionElementoBinding
 
@@ -45,12 +46,20 @@ class SeleccionElementoFragment : Fragment() {
 
         val tipoSeleccion = arguments?.getSerializable(ARG_TIPO_SELECCION) as TipoSeleccion
 
-        when(tipoSeleccion) {
-            TipoSeleccion.AVATAR -> configurarSeleccionAvatar()
-            TipoSeleccion.CIUDAD -> configurarSeleccionCiudad()
-
+        when (tipoSeleccion) {
+            TipoSeleccion.AVATAR -> {
+                configurarSeleccionAvatar()
+                setupRecyclerView(viewModel.avatarImages.toList()) { pos ->
+                    viewModel.setAvatarIndex(pos)
+                }
+            }
+            TipoSeleccion.CIUDAD -> {
+                configurarSeleccionCiudad()
+                setupRecyclerView(viewModel.cityImages.toList()) { pos ->
+                    viewModel.setCityIndex(pos)
+                }
+            }
         }
-
     }
 
     private fun configurarSeleccionAvatar() {
@@ -94,6 +103,16 @@ class SeleccionElementoFragment : Fragment() {
             viewModel.updateSelections(1, false, viewModel.cityImages.size)
         }
     }
+    private fun setupRecyclerView(images: List<Int>, onItemClick: (Int) -> Unit) {
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+        binding.recyclerView.adapter = SeleccionAdapter(images) { position ->
+            onItemClick(position)
+            // Actualiza la imagen principal al seleccionar
+            binding.elementoImage.setImageResource(images[position])
+        }
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

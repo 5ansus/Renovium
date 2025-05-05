@@ -1,5 +1,6 @@
 package es.uam.eps.dadm.santioscar.renovium
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,10 +48,21 @@ class MainFragment : Fragment() {
             // Lógica para replays
             Toast.makeText(context, "Replays clicked", Toast.LENGTH_SHORT).show()
         }
+
+
+        binding.startButton.setOnClickListener {
+            navigateToIntroGame()
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun navigateToIntroGame() {
+
+        startActivity(Intent(requireActivity(), IntroGame::class.java))
     }
 }

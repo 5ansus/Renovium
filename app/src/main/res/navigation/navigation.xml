@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <!-- Fragmento Principal -->
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="es.uam.eps.dadm.santioscar.renovium.MainFragment"
+        android:label="Main">
+        <action
+            android:id="@+id/action_to_intro"
+            app:destination="@id/introActivity" />  <!-- Navegación a Activity -->
+    </fragment>
+
+    <!-- Actividad -->
+    <activity
+        android:id="@+id/introActivity"
+        android:name="es.uam.eps.dadm.santioscar.renovium.IntroGame"
+        android:label="Intro Game" />
+
+    <!-- Fragmento de Selección  -->
+    <fragment
+        android:id="@+id/avatarFragment"
+        android:name="es.uam.eps.dadm.santioscar.renovium.SeleccionElementoFragment"
+        android:label="Select Avatar">
+        <argument
+            android:name="tipoSeleccion"
+            app:argType="string"
+            android:defaultValue="AVATAR" />
+    </fragment>
+</navigation>

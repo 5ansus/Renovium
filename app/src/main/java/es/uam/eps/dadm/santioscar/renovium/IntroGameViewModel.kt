@@ -58,4 +58,12 @@ class IntroGameViewModel : ViewModel() {
             else -> ScreenType.AVATAR
         }
     }
+
+    fun setAvatarIndex(index: Int) {
+        _avatarIndex.value = index
+    }
+
+    fun setCityIndex(index: Int) {
+        _cityIndex.value = index
+    }
 }
