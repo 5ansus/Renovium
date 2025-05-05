@@ -38,9 +38,9 @@ class GameViewModel(private val context: Context) : DefaultLifecycleObserver {
     }
 
     /**
-     * TO-DO
+     * Se llama cuando el ciclo de vida del propietario entra en el estado "ON_START".
      *
-     * @param owner LifecycleOwner
+     * @param owner El LifecycleOwner asociado al ciclo de vida observado.
      */
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
@@ -48,12 +48,13 @@ class GameViewModel(private val context: Context) : DefaultLifecycleObserver {
     }
 
     /**
-     * TO-DO
+     * Se llama cuando el ciclo de vida del propietario entra en el estado "ON_STOP".
      *
-     * @param owner LifecycleOwner
+     * @param owner El LifecycleOwner asociado al ciclo de vida observado.
      */
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
         Timber.d("Llamada a GameView.onStop")
     }
+
 }
