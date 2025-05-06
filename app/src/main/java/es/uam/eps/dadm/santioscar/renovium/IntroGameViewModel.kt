@@ -17,6 +17,8 @@ class IntroGameViewModel : ViewModel() {
     enum class ScreenType { AVATAR, CITY, START }
     private val _currentScreen = MutableLiveData(ScreenType.AVATAR)
     val currentScreen: LiveData<ScreenType> = _currentScreen
+    private val _isFabVisible = MutableLiveData<Boolean>(false)
+    val isFabVisible: LiveData<Boolean> = _isFabVisible
 
     // LiveData para seguimiento
     private val _avatarIndex = MutableLiveData<Int>(0)
@@ -45,7 +47,10 @@ class IntroGameViewModel : ViewModel() {
     fun navigateToNextScreen() {
         _currentScreen.value = when(_currentScreen.value) {
             ScreenType.AVATAR -> ScreenType.CITY
-            ScreenType.CITY -> ScreenType.START
+            ScreenType.CITY -> {
+                _isFabVisible.value = true
+                ScreenType.START
+            }
             ScreenType.START -> ScreenType.START
             null -> ScreenType.AVATAR
         }
@@ -54,7 +59,10 @@ class IntroGameViewModel : ViewModel() {
     fun navigateToPreviousScreen() {
         _currentScreen.value = when(_currentScreen.value) {
             ScreenType.CITY -> ScreenType.AVATAR
-            ScreenType.START -> ScreenType.CITY
+            ScreenType.START -> {
+                _isFabVisible.value = false
+                ScreenType.CITY
+            }
             else -> ScreenType.AVATAR
         }
     }

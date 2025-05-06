@@ -13,4 +13,5 @@
     <string name="back">Boton atras</string>
     <string name="cities_available">Ciudades disponibles: %d</string>
     <string name="avatars_available">Avatares disponibles: %d</string>
+    <string name="game_started">¡Partida iniciada!</string>
 </resources>

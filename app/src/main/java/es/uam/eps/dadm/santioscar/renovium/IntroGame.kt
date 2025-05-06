@@ -1,7 +1,9 @@
 package es.uam.eps.dadm.santioscar.renovium
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 import es.uam.eps.dadm.santioscar.renovium.databinding.ActivityIntroGameBinding
 /**
@@ -25,8 +28,13 @@ class IntroGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro_game)
 
+
         viewModel = ViewModelProvider(this).get(IntroGameViewModel::class.java)
         binding.lifecycleOwner = this
+
+        viewModel.isFabVisible.observe(this) { isVisible ->
+            binding.fabStartGame.visibility = if (isVisible) View.VISIBLE else View.GONE
+        }
         binding.backButton.setOnClickListener {
             Timber.d("Botón Atrás pulsado")
             when(viewModel.currentScreen.value) {
@@ -50,12 +58,21 @@ class IntroGame : AppCompatActivity() {
             }
         }
 
-        // Observar cambios en currentScreen para actualizar el botón
+
         viewModel.currentScreen.observe(this) { screen ->
             binding.continueButton.text = when(screen) {
                 IntroGameViewModel.ScreenType.AVATAR -> "Select Avatar"
                 IntroGameViewModel.ScreenType.CITY -> "Select City"
                 IntroGameViewModel.ScreenType.START -> "Start Game"
+            }
+
+            // Ocultar el botón continuar y mostrar el FAB cuando estemos en START
+            if (screen == IntroGameViewModel.ScreenType.START) {
+                binding.continueButton.visibility = View.GONE
+                binding.fabStartGame.visibility = View.VISIBLE
+            } else {
+                binding.continueButton.visibility = View.VISIBLE
+                binding.fabStartGame.visibility = View.GONE
             }
         }
 
@@ -63,6 +80,17 @@ class IntroGame : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, SeleccionElementoFragment.newInstance(SeleccionElementoFragment.TipoSeleccion.AVATAR))
             .commit()
+
+        binding.fabStartGame.setOnClickListener { view ->
+            // Muestra Snackbar con Material Design
+            Snackbar.make(
+                view,  // Vista para CoordinatorLayout
+                R.string.game_started,
+                Snackbar.LENGTH_SHORT
+            ).show()
+
+        }
+
 
         binding.continueButton.setOnClickListener {
             when(viewModel.currentScreen.value) {
