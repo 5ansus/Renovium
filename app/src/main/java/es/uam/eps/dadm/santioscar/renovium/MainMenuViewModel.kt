@@ -15,7 +15,7 @@ import timber.log.Timber
  *
  * @param context Context La vista
  */
-class GameViewModel(private val context: Context) : DefaultLifecycleObserver {
+class MainMenuViewModel(private val context: Context) : DefaultLifecycleObserver {
 
     val welcomeMessage = ObservableField<String>(context.getString(R.string.welcome_msg))
 

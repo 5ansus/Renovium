@@ -88,7 +88,11 @@ class IntroGame : AppCompatActivity() {
                 R.string.game_started,
                 Snackbar.LENGTH_SHORT
             ).show()
-
+            val intent = Intent(this, GameActivity::class.java).apply {
+                putExtra("avatarId", viewModel.avatarImages[viewModel.avatarIndex.value ?: 0])
+                putExtra("ciudadId", viewModel.cityImages[viewModel.cityIndex.value ?: 0])
+            }
+            startActivity(intent)
         }
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="es.uam.eps.dadm.santioscar.renovium.GameSessionViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Fondo de ciudad -->
+        <ImageView
+            android:id="@+id/ciudadBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+
+        <TextView
+            android:id="@+id/puntuacionText"
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text='@{"Points: " + viewModel.puntuacion}'
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:background="@color/black"/> <!-- Fondo para mejor visibilidad -->
+
+        <ImageView
+            android:id="@+id/avatarImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center" />
+
+        <!-- Boton de accion -->
+        <Button
+            android:id="@+id/botonAccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="32dp"
+            android:onClick="@{() -> viewModel.aumentarPuntuacion()}"
+            android:text= "@string/accion"/>
+    </FrameLayout>
+</layout>

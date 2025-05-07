@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="es.uam.eps.dadm.santioscar.renovium.GameViewModel" />
+            type="es.uam.eps.dadm.santioscar.renovium.MainMenuViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -14,14 +14,14 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     companion object {
-        fun newInstance(viewModel: GameViewModel): MainFragment {
+        fun newInstance(viewModel: MainMenuViewModel): MainFragment {
             return MainFragment().apply {
                 this.viewModel = viewModel
             }
         }
     }
 
-    private lateinit var viewModel: GameViewModel
+    private lateinit var viewModel: MainMenuViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

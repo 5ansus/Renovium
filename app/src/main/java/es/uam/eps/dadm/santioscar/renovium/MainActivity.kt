@@ -14,7 +14,7 @@ import timber.log.Timber
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var gameViewModel: GameViewModel
+    private lateinit var mainMenuViewModel: MainMenuViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +23,14 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // 2. Inicializar ViewModel y configuración existente
-        gameViewModel = GameViewModel(this)
-        binding.gameView = gameViewModel
+        mainMenuViewModel = MainMenuViewModel(this)
+        binding.gameView = mainMenuViewModel
         binding.lifecycleOwner = this
-        lifecycle.addObserver(gameViewModel)
+        lifecycle.addObserver(mainMenuViewModel)
 
         // 3. Reemplazar el contenido con el fragmento manteniendo la lógica
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MainFragment.newInstance(gameViewModel))
+            .replace(R.id.container, MainFragment.newInstance(mainMenuViewModel))
             .addToBackStack(null)
             .commit()
 

@@ -17,5 +17,7 @@
     <string name="cities_available">Cities available: %d</string>
     <string name="avatars_available">Avatars available: %d</string>
     <string name="game_started">Game started!</string>
+    <string name="accion">Action!</string>
+    <string name="puntos">Points: %d</string>
 
 </resources>
