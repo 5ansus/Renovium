@@ -47,6 +47,8 @@ class MainFragment : Fragment() {
         binding.replaysButton.setOnClickListener {
             // Lógica para replays
             Toast.makeText(context, "Replays clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), HistorialActivity::class.java))
+
         }
 
 

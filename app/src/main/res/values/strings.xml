@@ -19,5 +19,9 @@
     <string name="game_started">Game started!</string>
     <string name="accion">Action!</string>
     <string name="puntos">Points: %d</string>
+    <string name="guardar">Saved %d</string>
+    <string name="recycler_view_desc">List of saved games</string>
+    <string name="historial_title">Game replays</string>
+
 
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import es.uam.eps.dadm.santioscar.renovium.database.AppDatabase
 import es.uam.eps.dadm.santioscar.renovium.databinding.ActivityGameBinding
 
 class GameActivity : AppCompatActivity() {
@@ -18,8 +19,14 @@ class GameActivity : AppCompatActivity() {
         val avatarId = intent.getIntExtra("avatarId", R.drawable.avatar1)
         val ciudadId = intent.getIntExtra("ciudadId", R.drawable.city1)
 
-        viewModel = ViewModelProvider(this).get(GameSessionViewModel::class.java)
+        val partidaDao = AppDatabase.getDatabase(this).partidaDao()
+        viewModel = ViewModelProvider(
+            this,
+            GameSessionViewModelFactory(partidaDao)
+        ).get(GameSessionViewModel::class.java)
         binding.viewModel = viewModel
+        binding.avatarId = avatarId
+        binding.ciudadId = ciudadId
         binding.lifecycleOwner = this
 
         // Configurar vista con las selecciones

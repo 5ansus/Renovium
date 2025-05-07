@@ -7,6 +7,12 @@
         <variable
             name="viewModel"
             type="es.uam.eps.dadm.santioscar.renovium.GameSessionViewModel" />
+        <variable
+            name="avatarId"
+            type="int" />
+        <variable
+            name="ciudadId"
+            type="int" />
     </data>
 
     <FrameLayout
@@ -21,15 +27,17 @@
             android:scaleType="centerCrop"/>
 
 
+        <!-- Fondo para mejor visibilidad -->
+
         <TextView
             android:id="@+id/puntuacionText"
-            android:layout_width="307dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:background="@color/black"
             android:text='@{"Points: " + viewModel.puntuacion}'
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:background="@color/black"/> <!-- Fondo para mejor visibilidad -->
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/avatarImage"
@@ -46,5 +54,14 @@
             android:layout_marginBottom="32dp"
             android:onClick="@{() -> viewModel.aumentarPuntuacion()}"
             android:text= "@string/accion"/>
+
+        <Button
+            android:id="@+id/botonGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:text="@string/guardar"
+            android:onClick="@{() -> viewModel.guardarPartida(avatarId, ciudadId)}"/>
     </FrameLayout>
 </layout>
