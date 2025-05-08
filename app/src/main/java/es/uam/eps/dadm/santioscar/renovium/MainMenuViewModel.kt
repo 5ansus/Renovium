@@ -17,21 +17,15 @@ import timber.log.Timber
  */
 class MainMenuViewModel(private val context: Context) : DefaultLifecycleObserver {
 
-    val welcomeMessage = ObservableField<String>(context.getString(R.string.welcome_msg))
+
 
     /**
-     * Muestra un Toast con un mensaje de que el juego ya va a comenzar y
-     * realiza el Intent hacia la siguiente vista, en este caso IntroGame.
+     * Realiza el Intent hacia la siguiente vista, en este caso IntroGame.
      *
      */
     fun handleStartGame() {
         Timber.d("Botón Start pulsado")
 
-        Toast.makeText(
-            context,
-            context.getString(R.string.game_start_msg),
-            Toast.LENGTH_SHORT
-        ).show()
 
         val intent = Intent(context, IntroGame::class.java)
         context.startActivity(intent)

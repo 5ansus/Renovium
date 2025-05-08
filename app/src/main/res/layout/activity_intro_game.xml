@@ -25,18 +25,21 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Botón flotante (oculto inicialmente) -->
+        <!-- Botón Continuar -->
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabStartGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="36dp"
+            android:src="@drawable/ic_play"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/white"
-            app:tooltipText="@string/game_started"
-            android:src="@drawable/ic_play"
-            />
-        <!-- Botón Continuar -->
+            app:tooltipText="@string/game_started" />
+
         <Button
             android:id="@+id/continueButton"
             android:layout_width="wrap_content"

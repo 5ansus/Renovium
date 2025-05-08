@@ -22,6 +22,8 @@
     <string name="guardar">Save</string>
     <string name="recycler_view_desc">List of saved games</string>
     <string name="historial_title">Game replays</string>
+    <string name="game_screen_title">Game ongoing</string>
+
 
 
 </resources>

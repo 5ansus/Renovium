@@ -19,4 +19,5 @@
     <string name="guardar">Guardar</string>
     <string name="recycler_view_desc">Lista de partidas guardadas</string>
     <string name="historial_title">Historial de Partidas</string>
+    <string name="game_screen_title">Partida en curso</string>
 </resources>

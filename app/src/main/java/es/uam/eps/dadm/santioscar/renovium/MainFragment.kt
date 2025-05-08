@@ -82,9 +82,7 @@ class MainFragment : Fragment() {
     }
 
     /**
-     * Navega a la actividad [IntroGame] para comenzar una nueva partida.
-     *
-     * Se ejecuta al hacer clic en el botón de inicio (startButton).
+     * Navegacion a la pantalla de IntroGame
      */
     private fun navigateToIntroGame() {
 

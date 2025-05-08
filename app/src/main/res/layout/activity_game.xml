@@ -15,19 +15,21 @@
             type="int" />
     </data>
 
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Fondo de ciudad -->
+
+
         <ImageView
             android:id="@+id/ciudadBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
 
 
-        <!-- Fondo para mejor visibilidad -->
 
         <TextView
             android:id="@+id/puntuacionText"
@@ -45,15 +47,14 @@
             android:layout_height="100dp"
             android:layout_gravity="center" />
 
-        <!-- Boton de accion -->
         <Button
             android:id="@+id/botonAccion"
-            android:layout_width="wrap_content"
+            android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="32dp"
             android:onClick="@{() -> viewModel.aumentarPuntuacion()}"
-            android:text= "@string/accion"/>
+            android:text="@string/accion" />
 
         <Button
             android:id="@+id/botonGuardar"
@@ -61,7 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:text="@string/guardar"
-            android:onClick="@{() -> viewModel.guardarPartida(avatarId, ciudadId)}"/>
+            android:onClick="@{() -> viewModel.guardarPartida(avatarId, ciudadId)}"
+            android:text="@string/guardar" />
+
+
     </FrameLayout>
 </layout>

@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import es.uam.eps.dadm.santioscar.renovium.database.AppDatabase
 import es.uam.eps.dadm.santioscar.renovium.databinding.ActivityGameBinding
 
@@ -60,5 +61,22 @@ class GameActivity : AppCompatActivity() {
         binding.botonAccion.setOnClickListener {
             viewModel.aumentarPuntuacion()
         }
+
+
+
+
+    }
+
+    private fun showExitConfirmationDialog() {
+        MaterialAlertDialogBuilder(this)
+                saveGameAndExit()
+    }
+
+    private fun saveGameAndExit() {
+        viewModel.guardarPartida(
+            intent.getIntExtra("avatarId", R.drawable.avatar1),
+            intent.getIntExtra("ciudadId", R.drawable.city1)
+        )
+        finish()
     }
 }

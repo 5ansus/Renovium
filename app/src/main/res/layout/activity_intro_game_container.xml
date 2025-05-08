@@ -14,9 +14,9 @@
         android:id="@+id/continueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/intro_start"
         android:layout_gravity="center"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:text="@string/intro_start" />
 
     <ImageButton
         android:id="@+id/backButton"
