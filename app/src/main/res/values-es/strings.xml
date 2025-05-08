@@ -16,7 +16,7 @@
     <string name="game_started">¡Partida iniciada!</string>
     <string name="accion">!Acción!</string>
     <string name="puntos">Puntos: %d</string>
-    <string name="guardar">Guardado %d</string>
+    <string name="guardar">Guardar</string>
     <string name="recycler_view_desc">Lista de partidas guardadas</string>
     <string name="historial_title">Historial de Partidas</string>
 </resources>

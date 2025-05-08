@@ -12,6 +12,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 
 import es.uam.eps.dadm.santioscar.renovium.databinding.FragmentSeleccionElementoBinding
 
+/**
+ * Fragmento reutilizable para seleccionar avatares o ciudades al inicio del juego.
+ *
+ * Puede configurarse en dos modos mediante [TipoSeleccion]:
+ * - AVATAR: Para selección de personaje
+ * - CIUDAD: Para selección de escenario
+ *
+ * Utiliza [IntroGameViewModel] para mantener el estado de las selecciones.
+ */
 class SeleccionElementoFragment : Fragment() {
     private var _binding: FragmentSeleccionElementoBinding? = null
     private val binding get() = _binding!!
@@ -22,6 +31,12 @@ class SeleccionElementoFragment : Fragment() {
     companion object {
         private const val ARG_TIPO_SELECCION = "tipo_seleccion"
 
+        /**
+         * Crea una nueva instancia del fragmento configurada para un tipo de selección específico.
+         *
+         * @param tipo El tipo de elementos a seleccionar (AVATAR o CIUDAD)
+         * @return Nueva instancia del fragmento configurada
+         */
         fun newInstance(tipo: TipoSeleccion): SeleccionElementoFragment {
             return SeleccionElementoFragment().apply {
                 arguments = Bundle().apply {
@@ -62,6 +77,11 @@ class SeleccionElementoFragment : Fragment() {
         }
     }
 
+
+    /**
+     * Configura el fragmento para modo selección de avatar.
+     * Actualiza la UI y configura listeners específicos para avatares.
+     */
     private fun configurarSeleccionAvatar() {
         binding.selectElementoLabel.text = getString(R.string.intro_avatar)
 
@@ -83,6 +103,10 @@ class SeleccionElementoFragment : Fragment() {
         }
     }
 
+    /**
+     * Configura el fragmento para modo selección de ciudad.
+     * Actualiza la UI y configura listeners específicos para ciudades.
+     */
     private fun configurarSeleccionCiudad() {
         binding.selectElementoLabel.text = getString(R.string.intro_city)
 
@@ -103,6 +127,12 @@ class SeleccionElementoFragment : Fragment() {
             viewModel.updateSelections(1, false, viewModel.cityImages.size)
         }
     }
+    /**
+     * Configura el RecyclerView para mostrar las opciones de selección.
+     *
+     * @param images Lista de recursos drawable a mostrar
+     * @param onItemClick Callback para manejar la selección de un ítem
+     */
     private fun setupRecyclerView(images: List<Int>, onItemClick: (Int) -> Unit) {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
         binding.recyclerView.adapter = SeleccionAdapter(images) { position ->

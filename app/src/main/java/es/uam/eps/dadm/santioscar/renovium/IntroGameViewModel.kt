@@ -32,6 +32,9 @@ class IntroGameViewModel : ViewModel() {
     val remainingCities: LiveData<Int> = _remainingCities
     val remainingAvatars: LiveData<Int> = _remainingAvatars
 
+    /**
+     * Guardar las selecciones nuevas de Avatar y Ciudad
+     */
     fun updateSelections(direction: Int, isAvatar: Boolean, totalItems: Int) {
         if (isAvatar) {
             val newIndex = ((_avatarIndex.value ?: 0) + direction + totalItems) % totalItems
@@ -44,6 +47,9 @@ class IntroGameViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Pasar de Avatar a Ciudad y de Ciudad a empezar pantalla
+     */
     fun navigateToNextScreen() {
         _currentScreen.value = when(_currentScreen.value) {
             ScreenType.AVATAR -> ScreenType.CITY
@@ -56,6 +62,9 @@ class IntroGameViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Navegar a la pantalla anterior guardando los estados
+     */
     fun navigateToPreviousScreen() {
         _currentScreen.value = when(_currentScreen.value) {
             ScreenType.CITY -> ScreenType.AVATAR
@@ -67,6 +76,9 @@ class IntroGameViewModel : ViewModel() {
         }
     }
 
+    /**
+     * setters
+     */
     fun setAvatarIndex(index: Int) {
         _avatarIndex.value = index
     }

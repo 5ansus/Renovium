@@ -7,7 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import es.uam.eps.dadm.santioscar.renovium.database.AppDatabase
 import es.uam.eps.dadm.santioscar.renovium.databinding.ActivityHistorialBinding
 
-
+/**
+ * Actividad que muestra el historial de partidas guardadas.
+ *
+ * Configura un RecyclerView para mostrar la lista de partidas obtenidas
+ * desde la base de datos a través del [HistorialViewModel].
+ *
+ * Responsabilidades:
+ * - Inicializar el ViewModel con su Factory
+ * - Configurar el RecyclerView y su adaptador
+ * - Observar cambios en los datos y actualizar la UI
+ */
 class HistorialActivity : AppCompatActivity() {
     private lateinit var binding:   ActivityHistorialBinding
     private lateinit var viewModel: HistorialViewModel

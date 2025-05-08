@@ -9,6 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import es.uam.eps.dadm.santioscar.renovium.databinding.FragmentMainBinding
 
+/**
+ * Fragmento principal que actúa como punto de entrada de la aplicación.
+ *
+ * Muestra el menú principal con opciones para:
+ * - Iniciar sesión (loginButton)
+ * - Ver historial de partidas (replaysButton)
+ * - Comenzar nueva partida (startButton)
+ *
+ * Utiliza [MainMenuViewModel] para manejar la lógica de presentación.
+ */
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -32,6 +42,12 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Configura los listeners de los botones y vincula el ViewModel cuando la vista está creada.
+     *
+     * @param view La vista raíz del fragmento
+     * @param savedInstanceState Estado previo de la instancia, si existe
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -57,12 +73,19 @@ class MainFragment : Fragment() {
         }
     }
 
-
+    /**
+     * Para destruir
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    /**
+     * Navega a la actividad [IntroGame] para comenzar una nueva partida.
+     *
+     * Se ejecuta al hacer clic en el botón de inicio (startButton).
+     */
     private fun navigateToIntroGame() {
 
         startActivity(Intent(requireActivity(), IntroGame::class.java))
